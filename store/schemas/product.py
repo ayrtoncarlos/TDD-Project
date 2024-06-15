@@ -1,8 +1,7 @@
-from datetime import datetime
 from decimal import Decimal
-from typing import Annotated, Optional
+from typing import Annotated
 from bson import Decimal128
-from pydantic import UUID4, AfterValidator, BaseModel, Field, model_validator
+from pydantic import AfterValidator, BaseModel, Field
 from store.schemas.base import BaseSchemaMixin, OutSchema
 
 
@@ -29,9 +28,9 @@ DECIMAL = Annotated[Decimal, AfterValidator(convert_decimal_128)]
 
 
 class ProductUpdateIn(BaseSchemaMixin):
-    quantity: Optional[int] = Field(None, description="Product quantity")
-    price: Optional[DECIMAL] = Field(None, description="Product price")
-    status: Optional[bool] = Field(None, description="Product status")
+    quantity: int | None = Field(None, description="Product quantity")
+    price: DECIMAL | None = Field(None, description="Product price")
+    status: bool | None = Field(None, description="Product status")
 
 
 class ProductUpdateOut(ProductOut):

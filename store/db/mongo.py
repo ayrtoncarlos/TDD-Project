@@ -9,4 +9,5 @@ class MongoClient:
     def get(self) -> AsyncIOMotorClient:
         return self._client
 
+
 db_client = MongoClient()

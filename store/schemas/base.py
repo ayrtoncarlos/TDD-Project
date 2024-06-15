@@ -6,7 +6,7 @@ from pydantic import UUID4, BaseModel, Field, model_validator
 
 class BaseSchemaMixin(BaseModel):
     class Config:
-        from_attributes=True
+        from_attributes = True
 
 
 class OutSchema(BaseModel):
@@ -19,5 +19,5 @@ class OutSchema(BaseModel):
         for key, value in data.items():
             if isinstance(value, Decimal128):
                 data[key] = Decimal(str(value))
-        
+
         return data
